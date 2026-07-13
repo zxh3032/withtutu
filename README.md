@@ -46,11 +46,19 @@ withtutu/
 │   ├── 技术选型说明.md
 │   └── 迭代流程记录.md
 ├── frontend/
+│   ├── .gitignore
 │   ├── README.md
 │   ├── change-records/
+│   ├── eslint.config.mjs
+│   ├── next-env.d.ts
+│   ├── next.config.ts
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.mjs
 │   ├── public/
 │   ├── src/
-│   └── tests/
+│   ├── tests/
+│   └── tsconfig.json
 └── backend/
     ├── README.md
     ├── change-records/
@@ -88,12 +96,14 @@ withtutu/
 
 ## 当前状态
 
-项目当前处于工程基线整理阶段：
+项目当前已建立前端工程基线，尚未进入业务功能开发：
 
 - 已确定前后端基础技术方向；
 - 已建立文档、前端和后端目录；
 - 已定义代码分层和修改记录规则；
-- 尚未初始化前端、后端依赖；
+- 前端已完成 Next.js、TypeScript、Tailwind CSS 和 Motion for React 工程初始化；
+- 前端已通过代码检查、类型检查、依赖审计和生产构建；
+- 尚未初始化后端依赖；
 - 尚未确定首个业务功能迭代。
 
 后续开发以迭代记录中的当前迭代为准。

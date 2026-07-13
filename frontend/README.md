@@ -15,11 +15,20 @@
 
 ```text
 frontend/
+├── .gitignore
 ├── README.md
 ├── change-records/
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
 ├── public/
 ├── src/
 │   ├── app/
+│   │   ├── layout.tsx
+│   │   └── page.tsx
 │   ├── components/
 │   │   ├── ui/
 │   │   └── shared/
@@ -29,17 +38,25 @@ frontend/
 │   ├── services/
 │   ├── stores/
 │   ├── styles/
+│   │   └── globals.css
 │   └── types/
-└── tests/
-    └── e2e/
+├── tests/
+│   └── e2e/
+└── tsconfig.json
 ```
 
 ## 目录说明
 
 | 路径 | 内容与职责 |
 |---|---|
+| `.gitignore` | 排除依赖、构建产物、本地环境文件和日志 |
 | `README.md` | 当前前端目录的结构总览和代码放置规则 |
 | `change-records/` | 前端代码、页面、交互和业务逻辑修改记录 |
+| `package.json` / `package-lock.json` | npm 脚本、引擎要求、依赖声明和可重现的版本锁定 |
+| `next.config.ts` / `next-env.d.ts` | Next.js 运行配置和框架类型声明 |
+| `tsconfig.json` | TypeScript 严格类型检查、Next.js 插件和 `@/*` 路径别名配置 |
+| `eslint.config.mjs` | Next.js Core Web Vitals 和 TypeScript 静态检查规则 |
+| `postcss.config.mjs` | Tailwind CSS PostCSS 构建插件配置 |
 | `public/` | 不经过模块导入、需要直接访问的静态资源 |
 | `src/app/` | Next.js 路由、布局、页面入口及路由级状态文件 |
 | `src/components/ui/` | 不依赖具体业务的基础 UI 组件 |
@@ -52,6 +69,23 @@ frontend/
 | `src/styles/` | 全局样式、Tailwind 入口和 CSS Variables |
 | `src/types/` | 跨功能复用的公共 TypeScript 类型 |
 | `tests/e2e/` | 从用户视角验证完整操作流程的端到端测试 |
+
+## 开发与验证
+
+以下命令在 `frontend/` 目录中执行：
+
+```bash
+npm ci
+npm run dev
+```
+
+提交前根据修改范围执行：
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
 
 ## 代码放置规则
 
@@ -77,6 +111,7 @@ YYYYMMDD_功能变动.md
 
 当前记录：
 
+- `20260713_前端工程初始化.md`：建立可运行、可检查和可生产构建的前端工程基线；
 - `20260713_前端目录分层初始化.md`：建立前端初始分层；
 - `20260713_目录总览文件补充.md`：增加本目录总览文件及维护规则。
 
