@@ -4,6 +4,8 @@
 
 ## 技术基线
 
+以下为后端技术摘要，完整技术选型以 [`docs/技术选型说明.md`](../docs/技术选型说明.md) 为准。
+
 - 语言：Go；
 - HTTP 框架：Gin；
 - 数据库：MySQL；
@@ -62,8 +64,8 @@ backend/
 
 ```text
 transport → application → domain
-                       ↑
-              infrastructure
+infrastructure ───────→ domain
+bootstrap → transport / application / infrastructure
 ```
 
 - `domain` 不依赖 Gin、MySQL 或 Redis；
@@ -75,13 +77,15 @@ transport → application → domain
 
 ## 修改记录规则
 
-后端发生文件、代码、接口、数据结构或缓存逻辑变化时，在 `change-records/` 中记录：
+后端发生源代码、配置、脚本、测试、接口、数据结构、数据库、缓存或业务逻辑变化时，在 `change-records/` 中记录：
 
 ```text
 YYYYMMDD_功能变动.md
 ```
 
-每份记录至少包含修改时间、修改原因、修改范围、涉及文件、实际变更、逻辑变化、数据库或缓存变化、验证结果和后续事项。
+同一迭代、同一功能只维护一份记录，文件名使用首次修改日期；跨日期继续修改时，在原记录中追加带时间的内容。独立功能或范围发生实质变化时创建新记录，并与相关记录相互链接。
+
+每份记录至少包含修改时间、修改原因、修改范围、涉及文件、实际变更、逻辑变化、数据库或缓存变化、验证结果、已知风险与后续事项。没有数据库或缓存变化时明确写“无”。
 
 当前记录：
 
